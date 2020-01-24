@@ -31,9 +31,71 @@ class _VendaPageState extends State<VendaPage> {
               ),
               Expanded(
                 flex: 6,
-                child: Container(
-                  color: Colors.green,
-                  width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      //color: Colors.teal,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  "SEQ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "CODIGO",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "QTD UN",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "DESCRIÇÃO",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "VALOR TOTAL R\$",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Expanded(
@@ -66,13 +128,82 @@ class _VendaPageState extends State<VendaPage> {
                                           fontSize: 14),
                                     ),
                                     Text(
-                                      "0",
+                                      "01",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14),
                                     )
                                   ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      "Desconto",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
+                                    Text(
+                                      "R\$ 0,00",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      "SubTotal",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
+                                    Text(
+                                      "R\$ 6,99",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                child: Text(
+                                  "Total",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                child: Text(
+                                  "R\$ 6,99",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22),
                                 ),
                               )
                             ],
@@ -89,6 +220,14 @@ class _VendaPageState extends State<VendaPage> {
                                   color: Colors.green,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(15))),
+                              child: Center(
+                                  child: Text(
+                                "Pagar",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              )),
                             ),
                           ),
                           Expanded(
