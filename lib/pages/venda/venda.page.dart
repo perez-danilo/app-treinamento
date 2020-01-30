@@ -1,3 +1,7 @@
+import 'package:appmoura/pages/pagamento/pagamento.page.dart';
+import 'package:appmoura/shared/app.bloc.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VendaPage extends StatefulWidget {
@@ -6,28 +10,34 @@ class VendaPage extends StatefulWidget {
 }
 
 class _VendaPageState extends State<VendaPage> {
+  final bloc = BlocProvider.getBloc<AppBloc>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: Colors.black,
+          color: Colors.white,
           child: Column(
             children: <Widget>[
               Expanded(
                 flex: 1,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                  alignment: Alignment.centerRight,
-                  width: double.infinity,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
+                    padding: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                    alignment: Alignment.centerRight,
+                    width: double.infinity,
+                    child: StreamBuilder(
+                      initialData: "Valor inical",
+                      stream: bloc.outValor,
+                      builder: (ctx, snapshot) {
+                        print("entrei no bloc");
+                        if (snapshot.hasData) {
+                          return Text(snapshot.data);
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    )),
               ),
               Expanded(
                 flex: 6,
@@ -214,37 +224,49 @@ class _VendaPageState extends State<VendaPage> {
                           child: Column(
                         children: <Widget>[
                           Expanded(
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(8, 16, 16, 8),
-                              decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15))),
-                              child: Center(
-                                  child: Text(
-                                "Pagar",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              )),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(CupertinoPageRoute(
+                                    fullscreenDialog: true,
+                                    builder: (context) => PagamentoPage()));
+                              },
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(8, 16, 16, 8),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                                child: Center(
+                                    child: Text(
+                                  "Pagar",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                )),
+                              ),
                             ),
                           ),
                           Expanded(
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(8, 8, 16, 16),
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15))),
-                              child: Center(
-                                  child: Text(
-                                "Cancelar",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              )),
+                            child: InkWell(
+                              onTap: () {
+                                bloc.setData("Teste");
+                              },
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(8, 8, 16, 16),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                                child: Center(
+                                    child: Text(
+                                  "Cancelar",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                )),
+                              ),
                             ),
                           ),
                         ],
