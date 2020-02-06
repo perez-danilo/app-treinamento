@@ -1,4 +1,5 @@
 import 'package:appmoura/pages/home.page.dart';
+import 'package:appmoura/pages/pagamento/pagamento.page.dart';
 import 'package:appmoura/pages/usuarios/usuarios.page.dart';
 import 'package:appmoura/pages/venda/venda.page.dart';
 import 'package:appmoura/services/api-moura.service.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
-        home: MyHomePage(title: "Teste"),
+        home: PagamentoPage(),
       ),
       blocs: [
         Bloc((i) => AppBloc()),
