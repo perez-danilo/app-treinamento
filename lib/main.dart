@@ -1,5 +1,8 @@
 import 'package:appmoura/pages/home.page.dart';
+import 'package:appmoura/pages/usuarios/usuarios.page.dart';
 import 'package:appmoura/pages/venda/venda.page.dart';
+import 'package:appmoura/services/api-moura.service.dart';
+import 'package:appmoura/services/api.services.dart';
 import 'package:appmoura/shared/app.bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +19,15 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
-        home: VendaPage(),
+        home: MyHomePage(title: "Teste"),
       ),
       blocs: [
         Bloc((i) => AppBloc()),
       ],
-      dependencies: [],
+      dependencies: [
+        Dependency((i) => ApiService()),
+        Dependency((i) => ApiMouraService()),
+      ],
     );
   }
 }
